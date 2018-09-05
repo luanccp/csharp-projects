@@ -19,8 +19,6 @@ namespace ServicesPainelController
             progressBar1.Style = ProgressBarStyle.Marquee;
             progressBar1.Visible = false;
             GetwindowServices();
-
-
         }
 
         private void GetwindowServices()
@@ -31,7 +29,7 @@ namespace ServicesPainelController
             comboBox1.Items.Clear();
             for (int i = 0; i < service.Length; i++)
             {
-                comboBox1.Items.Add(service[i].ServiceName);
+                comboBox1.Items.Add(service[i].DisplayName);
             }
         }
 
@@ -58,7 +56,6 @@ namespace ServicesPainelController
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            //this.button1.Enabled = false;
             this.progressBar1.Visible = false;
             if (e.Error!=null)
             {
@@ -76,8 +73,8 @@ namespace ServicesPainelController
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.button1.Enabled = false;
-            this.button2.Enabled = true;
+            this.button1.Enabled = true;
+            this.button2.Enabled = false;
             this.progressBar1.Visible = true;
             this.backgroundWorker1.RunWorkerAsync(comboBox1.Text);
 
